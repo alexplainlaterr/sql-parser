@@ -1,7 +1,5 @@
 import pandas as pd
-import sqlparse
 from pathlib import Path
-import re
 from sql_metadata import Parser
 
 def process_sql_queries(df):
@@ -9,7 +7,6 @@ def process_sql_queries(df):
     all_tables = set()
 
     for index, row in df.iterrows():
-        # sql_query = row['SQL_Query']
         sql_query = row['sql_unload']
         try:
             tables = Parser(sql_query).tables
